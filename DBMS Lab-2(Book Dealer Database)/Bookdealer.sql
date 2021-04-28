@@ -92,3 +92,6 @@ SELECT *FROM ORDER_DETAILS;
 SELECT AUTHOR.author_id,name,city,country FROM AUTHOR,CATALOG where AUTHOR.author_id=CATALOG.author_id group by CATALOG.author_id having count(CATALOG.author_id)>=2;
 SELECT PRICE FROM CATALOG where year>2000;
 select name from AUTHOR,CATALOG where AUTHOR.author_id=CATALOG.author_id and book_id in(select book_id from ORDER_DETAILS where quantity=(select max(quantity) from ORDER_DETAILS));
+update CATALOG set price=1.1*price where publisher_id in(select publisher_id from PUBLISHER where name='PEARSON');
+COMMIT;
+SELECT *FROM CATALOG;                                                                                                                                          
